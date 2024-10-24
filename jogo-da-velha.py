@@ -8,10 +8,14 @@ def limpar_tela():
         os.system('clear')
 
 def imprimir_tabuleiro(x):
-    for i in range(3):
-        print("|" + "|".join(tabuleiro[i]) + "|")
+    print ( '|=== Tabuleiro ===|' )
+    print ( "|-----+-----+-----|" )
+    for i in range ( 3 ):
+        print ( "|" + "|".join ( tabuleiro[i] ) + "|" )
         if i < 2:
-            print("-" * 19)
+            print ( "|-----+-----+-----|" )
+    print ( "|-----+-----+-----|" )
+    print ( '|=================|' )
 
 def jogada_atual():
     global jogador_atual
