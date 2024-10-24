@@ -19,7 +19,6 @@ def imprimir_tabuleiro(x):
 
 def jogada_atual():
     global jogador_atual
-    global lista_jogadores
     if verificar_vencedor():
         imprimir_tabuleiro(tabuleiro)
     while not verificar_vencedor():
