@@ -75,23 +75,37 @@ def verificar_vencedor():
                 return True
 
     if all(tabuleiro[i][j].strip() != ' ' and tabuleiro[i][j].strip() in lista_jogadores for i in range(len(tabuleiro)) for j in range(len(tabuleiro[i]))):
-        print('Jogo encerrado! Deu velha.')
+        limpar_tela()
+        print('Jogo encerrado! Deu velha/EMPATE.')
         return True
 
     return False
 
-
 # Início do código
-# Tabuleiro inicial
-tabuleiro = [
-    ['  1  ', '  2  ', '  3  '],
-    ['  4  ', '  5  ', '  6  '],
-    ['  7  ', '  8  ', '  9  ']
-]
-# Lista de jogadores:
-lista_jogadores = ['X', 'O']
-# Definindo o jogador atual:
-jogador_atual = 'X'
-# Iniciando o jogo
-jogada_atual()
-imprimir_tabuleiro(tabuleiro)
+nr_jogadas = 0
+while True:
+    resposta = input(f'Deseja iniciar o jogo? [S/N]')
+    if resposta.upper() != 'S' and resposta.upper() != 'N':
+        print("Resposta inválida! Digite um valor entre \s'S' para sim, ou \s'N' para não.")
+    if resposta.upper() == 'S':
+        # Tabuleiro inicial
+        tabuleiro = [
+                    ['  1  ', '  2  ', '  3  '],
+                    ['  4  ', '  5  ', '  6  '],
+                    ['  7  ', '  8  ', '  9  ']
+                    ]
+        
+        # Lista de jogadores:
+        lista_jogadores = ['X','O']
+        # Definindo o jogador atual:
+        jogador_atual = 'X'
+
+        # Iniciando o jogo
+        limpar_tela()
+        jogada_atual()
+        imprimir_tabuleiro(tabuleiro)
+        # Somando o número de jogadas
+        nr_jogadas += 1
+    if resposta.upper() == 'N':
+        print(f'Foram jogadas {nr_jogadas} partidas. Obrigado e espero que tenha se divertido!!!')
+        break
