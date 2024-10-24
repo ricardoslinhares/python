@@ -1,3 +1,12 @@
+import os
+
+def limpar_tela():
+    # Verifica o sistema operacional
+    if os.name == 'nt':  # Windows
+        os.system('cls')
+    else:  # Linux/Mac
+        os.system('clear')
+
 def imprimir_tabuleiro(x):
     for i in range(3):
         print("|" + "|".join(tabuleiro[i]) + "|")
@@ -9,6 +18,7 @@ def jogada_atual():
     if verificar_vencedor():
         imprimir_tabuleiro(tabuleiro)
     while not verificar_vencedor():
+        limpar_tela()
         imprimir_tabuleiro(tabuleiro)
         jogada_atual = True
         while jogada_atual:
@@ -44,15 +54,19 @@ def verificar_vencedor():
             break
         for j in range(len(tabuleiro[i])):
             if tabuleiro[0][j] == tabuleiro[1][j] == tabuleiro[2][j] and tabuleiro[0][j].strip() in lista_jogadores:
+                limpar_tela()
                 print(f'\nJogo encerrado! O vencedor é {tabuleiro[0][j].strip()}.\n')
                 return True
             if tabuleiro[i][0] == tabuleiro[i][1] == tabuleiro[i][2] and tabuleiro[i][0].strip() in lista_jogadores:
+                limpar_tela()
                 print(f'\nJogo encerrado! O vencedor é {tabuleiro[i][0].strip()}.\n')
                 return True
             if tabuleiro[0][0] == tabuleiro[1][1] == tabuleiro[2][2] and tabuleiro[0][0].strip() in lista_jogadores:
+                limpar_tela()
                 print(f'\nJogo encerrado! O vencedor é {tabuleiro[0][0].strip()}.\n')
                 return True
             if tabuleiro[0][2] == tabuleiro[1][1] == tabuleiro[2][0] and tabuleiro[0][2].strip() in lista_jogadores:
+                limpar_tela()
                 print(f'\nJogo encerrado! O vencedor é {tabuleiro[0][2].strip()}.\n')
                 return True
 
