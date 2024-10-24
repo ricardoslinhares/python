@@ -113,7 +113,7 @@ while True:
         if nr_jogadas == 0:
             print('\nPrograma encerrado. Até a próxima!\n')
         if nr_jogadas > 1:
-            print(f'Foram jogadas {nr_jogadas} partidas. Obrigado e espero que tenha se divertido!!!')
+            print(f'\nForam jogadas {nr_jogadas} partidas. Obrigado e espero que tenha se divertido!!!\n')
         if nr_jogadas == 1:
-            print(f'Foi jogada {nr_jogadas} partida. Obrigado e espero que tenha se divertido!!!')
+            print(f'\nFoi jogada {nr_jogadas} partida. Obrigado e espero que tenha se divertido!!!\n')
         break
