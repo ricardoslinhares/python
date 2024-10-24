@@ -110,6 +110,8 @@ while True:
         # Somando o número de jogadas
         nr_jogadas += 1
     if resposta.upper() == 'N':
+        if nr_jogadas == 0:
+            print('\nPrograma encerrado. Até a próxima!\n')
         if nr_jogadas > 1:
             print(f'Foram jogadas {nr_jogadas} partidas. Obrigado e espero que tenha se divertido!!!')
         if nr_jogadas == 1:
