@@ -19,10 +19,10 @@ def imprimir_tabuleiro(x):
 
 def jogada_atual():
     global jogador_atual
+    global lista_jogadores
     if verificar_vencedor():
         imprimir_tabuleiro(tabuleiro)
     while not verificar_vencedor():
-        limpar_tela()
         imprimir_tabuleiro(tabuleiro)
         jogada_atual = True
         while jogada_atual:
@@ -34,18 +34,18 @@ def jogada_atual():
                 continue
             for i in range(len(tabuleiro)):
                 for j in range(len(tabuleiro[i])):
-                    if tabuleiro[i][j].strip() == str(entrada_jogador):
-                        if tabuleiro[i][j].strip() not in lista_jogadores:
+                    if tabuleiro[i][j].strip() in lista_jogadores:
+                        limpar_tela()
+                        print('\nEspaço já ocupado. Selecione outro por favor.\n')
+                        continue
+                    elif tabuleiro[i][j].strip() == str(entrada_jogador):
+                            limpar_tela()
                             tabuleiro[i][j] = f'  {jogador_atual}  '
                             if jogador_atual == 'X':
                                 jogador_atual = 'O'
                             else:
                                 jogador_atual = 'X'
                             jogada_atual = False
-                        else:
-                            print("Espaço já ocupado. Escolha outro.")
-                            jogada_atual = True
-                            break
             if not jogada_atual:
                 break
             if jogada_atual:
