@@ -84,7 +84,10 @@ def verificar_vencedor():
 # Início do código
 nr_jogadas = 0
 while True:
-    resposta = input(f'Deseja iniciar o jogo? [S/N]')
+    if nr_jogadas == 0:
+        resposta = input(f'Deseja iniciar o jogo? [S/N]')
+    if nr_jogadas > 0:
+        resposta = input(f'Deseja continuar o jogo? [S/N]')
     if resposta.upper() != 'S' and resposta.upper() != 'N':
         print("Resposta inválida! Digite um valor entre \s'S' para sim, ou \s'N' para não.")
     if resposta.upper() == 'S':
@@ -107,5 +110,8 @@ while True:
         # Somando o número de jogadas
         nr_jogadas += 1
     if resposta.upper() == 'N':
-        print(f'Foram jogadas {nr_jogadas} partidas. Obrigado e espero que tenha se divertido!!!')
+        if nr_jogadas > 1:
+            print(f'Foram jogadas {nr_jogadas} partidas. Obrigado e espero que tenha se divertido!!!')
+        if nr_jogadas == 1:
+            print(f'Foi jogada {nr_jogadas} partida. Obrigado e espero que tenha se divertido!!!')
         break
