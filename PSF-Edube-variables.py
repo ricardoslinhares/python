@@ -12,7 +12,7 @@ while resposta:
             print('Isso não é um número. Tente novamente.')
             continue
         else: print(f'''\nO valor informado para x é: {x}.
-                    \nA expressão para calcular y é: y = 3x3 - 2x2 + 3x - 1.
+                    \nA expressão para calcular y é: y = 3x³ - 2x² + 3x - 1.
                     \nO valor de y depois do cálculo é: {(3*x**3 - 2*x**2 + 3*x-1):.2f}.''')
 
         while True:
