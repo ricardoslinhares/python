@@ -25,19 +25,25 @@ def jogada_atual():
         imprimir_tabuleiro(tabuleiro)
         jogada_atual = True
         while jogada_atual:
-            jogada_atual = False
             entrada_jogador = input(f'Jogador atual: {jogador_atual}. \nDeseja ocupar qual espaço no tabuleiro?: ')
+            
+            # Verifica se entrada é válida
             if not entrada_jogador.isdigit() or int(entrada_jogador) < 1 or int(entrada_jogador) > 9:
                 print("Entrada inválida. Por favor, digite um número entre 1 e 9.")
-                jogada_atual = True
                 continue
+            
+            jogada_feita = False
             for i in range(len(tabuleiro)):
                 for j in range(len(tabuleiro[i])):
-                    if tabuleiro[i][j].strip() in lista_jogadores:
-                        limpar_tela()
-                        print('\nEspaço já ocupado. Selecione outro por favor.\n')
-                        continue
-                    elif tabuleiro[i][j].strip() == str(entrada_jogador):
+                    # Primeiro encontra a posição desejada
+                    if tabuleiro[i][j].strip() == str(entrada_jogador):
+                        # Verifica se está ocupada
+                        if tabuleiro[i][j].strip() in lista_jogadores:
+                            limpar_tela()
+                            print('\nEspaço já ocupado. Selecione outro por favor.\n')
+                            break
+                        else:
+                            # Faz a jogada
                             limpar_tela()
                             tabuleiro[i][j] = f'  {jogador_atual}  '
                             if jogador_atual == 'X':
@@ -45,9 +51,12 @@ def jogada_atual():
                             else:
                                 jogador_atual = 'X'
                             jogada_atual = False
-            if not jogada_atual:
-                break
-            if jogada_atual:
+                            jogada_feita = True
+                            break
+                if jogada_feita:
+                    break
+                
+            if not jogada_feita and jogada_atual:
                 print("Jogada inválida. Tente novamente.")
 
 def verificar_vencedor():
